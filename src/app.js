@@ -6,6 +6,8 @@ const util = require('./util')
 // start an express app
 const app = express()
 
+const port =process.env.PORT || 3000
+
 const publicDir = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
@@ -102,6 +104,6 @@ app.get('*', (req, res) => {
 })
 
 // start the server by listening to requests on port 3000
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port: '+port)
 })
