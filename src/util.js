@@ -10,10 +10,10 @@ const geocode = (address, callback) => {
 
         if (error) {
             callback(
-                {error:'Unable to connect to location services'}
+                {error: 'Unable to connect to location services'}
                 , undefined)
         } else if (body.features.length === 0) {
-            callback( {error:'unable to find location. Try again'}, undefined)
+            callback({error: 'unable to find location. Try again'}, undefined)
         } else {
             callback(undefined, {
                 lat: body.features[0].center[1],
@@ -36,15 +36,17 @@ const forecast = (lat, long, callback) => {
             if (error) {
 
                 callback(
-                    {error:'unable to connect to the weather service!'}
+                    {error: 'unable to connect to the weather service!'}
                     , undefined)
 
             } else if (response.body.error) {
 
                 callback(
-                    { error:'unable to find weather data for the specified location'}
+                    {error: 'unable to find weather data for the specified location'}
                     , undefined)
 
+            } else if (!response.body.current) {
+                callback({error:'weather api is down, try later again'})
             } else {
 
 
@@ -58,8 +60,7 @@ const forecast = (lat, long, callback) => {
 }
 
 
-
 module.exports = {
     geocode: geocode,
-    forecast:forecast
+    forecast: forecast
 }

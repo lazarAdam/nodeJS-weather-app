@@ -99,7 +99,7 @@ app.get('/help/*', (req, res) => {
 // handling 404. which is any route that it didn't match none of the routes above (must be listed as the last get call)
 app.get('*', (req, res) => {
     res.render('404', {
-        error: 'Error 404. Page Not Found !'
+        error: 'Error 404. Page Not Found!'
     })
 })
 
