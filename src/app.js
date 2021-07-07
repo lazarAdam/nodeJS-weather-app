@@ -6,6 +6,7 @@ const util = require('./util')
 // start an express app
 const app = express()
 
+// get the port from the environment variable is exist else use 3000
 const port =process.env.PORT || 3000
 
 const publicDir = path.join(__dirname, '../public')
@@ -103,7 +104,7 @@ app.get('*', (req, res) => {
     })
 })
 
-// start the server by listening to requests on port 3000
+// start the server by listening to requests on the defined port at the top of this file
 app.listen(port, () => {
     console.log('Server is up on port: '+port)
 })
